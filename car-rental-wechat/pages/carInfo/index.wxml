@@ -1,0 +1,157 @@
+<l-capsule-bar home-page="/pages/index/index" hidden-title="{{true}}" bg-color="transparent" disable-home="{{true}}" has-padding="{{false}}">
+    <view wx:if="{{networkErr}}">
+        <van-empty wx:if="{{networkErr}}" image="network" description="网络故障">
+            <van-button round color="#53455555" custom-class="netErr" bind:tap="reStart">重试</van-button>
+        </van-empty>
+    </view>
+    <view wx:else>
+        <view>
+        <swiper class="swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for="{{carinfo.picUrls}}" wx:for-item="item">
+                <swiper-item class="swiper-item">
+                    <image class="swiper-item-image" src="{{imgUrlPre}}{{item}}" mode="aspectFill"></image>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view style="box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .9); height: 300rpx;">
+        <view style="padding: 20rpx;">
+            <view style=" display: flex;justify-content: space-between;">
+                <view>
+                    <text style="font-size: 48rpx;">￥{{carinfo.price}}</text>
+                    <text style="font-size: 22rpx;color: #515151;">/天</text>
+                    <van-tag color="#534555" custom-class="tag_tyle"><text style="margin: 0 auto;">星卡特价￥{{carinfo.vipPrice}}</text></van-tag>
+                </view>
+                <view>
+                    <van-icon class="icon-arrow" name="arrow" />
+                </view>
+            </view>
+
+
+            <view style="font-size: 30rpx; font-weight: 600;margin-top: 20rpx;">{{carinfo.name}}</view>
+            <view style="margin-top: 20rpx; font-size: 22rpx;color: #515151;">{{carinfo.licensePlate}}/{{carinfo.plateYear}}年上牌</view>
+
+
+            <view style="height: 80rpx; display: flex;justify-content: space-between;line-height: 30rpx;line-height: 80rpx;">
+                <view style="font-size: 26rpx;color: #515151;">保障权益</view>
+                <view>
+                    <view>
+                        <view style="width: 30rpx;height: 30rpx;background-color: wheat;display: inline-block; line-height: 30rpx;border-radius: 20rpx;">
+                            <van-icon color="#616161" name="success" />
+                        </view>
+                        <text style="font-size: 26rpx;color: #515151;">500万保障</text>
+                    </view>
+                </view>
+
+                <view>
+                    <view>
+                        <view style="width: 30rpx;height: 30rpx;background-color: wheat;display: inline-block; line-height: 30rpx;border-radius: 20rpx;">
+                            <van-icon color="#616161" name="success" />
+                        </view>
+                        <text style="font-size: 26rpx;color: #515151;">7×24h救援</text>
+                    </view>
+                </view>
+                <view>
+                    <view>
+                        <view style="width: 30rpx;height: 30rpx;background-color: wheat;display: inline-block; line-height: 30rpx;border-radius: 20rpx;">
+                            <van-icon color="#616161" name="success" />
+                        </view>
+                        <text style="font-size: 26rpx;color: #515151;">快速理赔</text>
+                    </view>
+                </view>
+                <view>
+                    <van-icon class="icon-arrow" name="arrow" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style="box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .9); height: 400rpx;margin-top: 20rpx;vertical-align:bottom;">
+        <view style="padding: 20rpx;">
+            <view style="font-weight: 600;">长租优惠</view>
+            <view style="margin-top: 20rpx;width: 90%; display: flex;justify-content: space-around;align-items: flex-end;">
+                <view style="height: 40rpx;display: flex;">
+                    <view style="height: 10rpx;width: 10rpx;border-radius: 50%;background-color:#f0c88f;margin-top: 12rpx;"></view>
+                    <text style="font-size: 30rpx;margin-left: 8rpx;width: 100rpx;">3日价</text>
+                </view>
+                <view style="font-size: 28rpx; color:#cfa973; width: 130rpx;">￥{{carinfo.threeDayPrice*3}}</view>
+                <text style="font-size: 26rpx;width: 130rpx;">合{{carinfo.threeDayPrice}}/天</text>
+                <view>
+                    <van-tag color="#534555" custom-class="tag_tyle"><text style="margin: 0 auto;">星卡特价￥{{carinfo.vipThreeDayPrice}}/天</text></van-tag>
+                </view>
+            </view>
+            <view style="margin-top: 30rpx;width: 90%; display: flex;justify-content: space-around;align-items: flex-end;">
+                <view style="height: 40rpx;display: flex;">
+                    <view style="height: 10rpx;width: 10rpx;border-radius: 50%;background-color:#f0c88f;margin-top: 12rpx;"></view>
+                    <text style="font-size: 30rpx;margin-left: 8rpx;width: 100rpx;">7日价</text>
+                </view>
+                <view style="font-size: 28rpx; color:#cfa973; width: 130rpx;">￥{{carinfo.weekPrice*3}}</view>
+                <text style="font-size: 26rpx;width: 130rpx;">合{{carinfo.weekPrice}}/天</text>
+                <view>
+                    <van-tag color="#534555" custom-class="tag_tyle"><text style="margin: 0 auto;">星卡特价￥{{carinfo.vipWeekPrice}}/天</text></van-tag>
+                </view>
+            </view>
+            <view style="margin-top: 30rpx;width: 90%; display: flex;justify-content: space-around;align-items: flex-end;">
+                <view style="height: 40rpx;display: flex;">
+                    <view style="height: 10rpx;width: 10rpx;border-radius: 50%;background-color:#f0c88f;margin-top: 12rpx;"></view>
+                    <text style="font-size: 30rpx;margin-left: 8rpx;width: 100rpx;">15日价</text>
+                </view>
+                <view style="font-size: 28rpx; color:#cfa973; width: 130rpx;">￥{{carinfo.halfmoonPrice*3}}</view>
+                <text style="font-size: 26rpx;width: 130rpx;">合{{carinfo.halfmoonPrice}}/天</text>
+                <view>
+                    <van-tag color="#534555" custom-class="tag_tyle"><text style="margin: 0 auto;">星卡特价￥{{carinfo.vipHalfmoonPrice}}/天</text></van-tag>
+                </view>
+            </view>
+            <view style="margin-top: 30rpx;width: 90%; display: flex;justify-content: space-around;align-items: flex-end;">
+                <view style="height: 40rpx;display: flex;">
+                    <view style="height: 10rpx;width: 10rpx;border-radius: 50%;background-color:#f0c88f;margin-top: 12rpx;"></view>
+                    <text style="font-size: 30rpx;margin-left: 8rpx;width: 100rpx;">30日价</text>
+                </view>
+                <view style="font-size: 28rpx; color:#cfa973; width: 130rpx;">￥{{carinfo.moonPrice*3}}</view>
+                <text style="font-size: 26rpx;width: 130rpx;">合{{carinfo.moonPrice}}/天</text>
+                <view>
+                    <van-tag color="#534555" custom-class="tag_tyle"><text style="margin: 0 auto;">星卡特价￥{{carinfo.vipMoonPrice}}/天</text></van-tag>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+    <view style="box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .9); height: 280rpx; margin-top: 20rpx;">
+        <view style="padding: 20rpx;">
+            <view>
+                <view style="font-weight: 600;">押金：￥12000</view>
+                <view></view>
+            </view>
+            <view style="font-size: 26rpx;color:#f3bd71 ;margin-top: 20rpx;font-weight: 600;">加入[零押计划]，押金可减免至：￥2000</view>
+            <view style="margin-top: 30rpx;">
+                <view style="background-color:#f0c88f; width: 480rpx;height: 90rpx;border-radius: 40rpx;text-align: center;margin:0 auto;line-height: 90rpx;font-weight: 600;">加入[0押计划]</view>
+            </view>
+        </view>
+    </view>
+    <view style="box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .9); height: 600rpx;margin-top: 20rpx;">
+        <view style="padding: 20rpx;">
+            <view style="display: flex;justify-content: space-between; align-items: flex-end;">
+                <view style="font-size: 26rpx;">用车流程</view>
+                <view style="font-size: 26rpx; color: rgb(172, 173, 173);">查看详情
+                    <van-icon class="icon-arrow" name="arrow" />
+                </view>
+            </view>
+            <view style="font-size: 28rpx;text-align: center;">1、确认订单</view>
+            <view style="margin-top: 20rpx; background-color:rgb(233, 235, 235);width: 98%;height: 60rpx;border-radius: 40rpx; font-size: 26rpx;color: rgb(126, 120, 120);text-align: center;line-height: 60rpx;">身份认证 → 提交订单 → 档期确认 → 支付定金/租金
+            </view>
+            <view style="margin-top: 30rpx; font-size: 28rpx;text-align: center;">2、到店取车/上门送车</view>
+            <view style="margin-top: 20rpx; background-color:rgb(233, 235, 235);width: 98%;height: 60rpx;border-radius: 40rpx; font-size: 26rpx;color: rgb(126, 120, 120);text-align: center;line-height: 60rpx;">支付租金尾款、押金 → 签订协议→交车验车
+            </view>
+            <view style="margin-top: 30rpx;font-size: 28rpx;text-align: center;">3、到店还车/上门接车</view>
+            <view style="margin-top: 20rpx; background-color:rgb(233, 235, 235);width: 98%;height: 60rpx;border-radius: 40rpx; font-size: 26rpx;color: rgb(126, 120, 120);text-align: center;line-height: 60rpx;">退还车损押金 → 30日内退还违章押金
+            </view>
+            <view style="margin-top: 40rpx;font-size: 24rpx;text-align: center;color: rgb(126, 120, 120);">24小时为1天 日均限行200公里 用车租金含保险</view>
+        </view>
+    </view>
+    <view style="height: 200rpx;"></view>
+    <van-goods-action>
+        <van-goods-action-button color="#534555" text="立即预定" bind:click="onClickButton" />
+    </van-goods-action>
+    </view>
+
+</l-capsule-bar>

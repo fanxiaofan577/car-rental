@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-steps": "@vant/weapp/steps/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "van-count-down": "@vant/weapp/count-down/index"
+  }
+}

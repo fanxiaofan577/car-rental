@@ -1,0 +1,24 @@
+<van-tabs active="{{active}}" bind:change="onChange" line-width="120rpx" color="#534555" sticky="true">
+  <van-tab title="全部" name="-1">
+	<van-empty wx:if="{{!orders || orders.length == 0}}" description="暂无订单" />
+    <orderscard wx:for="{{orders}}" wx:key="cid" wx:for-item="item" wx:for-index="index" serial_number='{{item.serialNumber}}' cid="{{item.cid}}" oid= "{{item.id}}" createDate="{{item.createTime}}" statusStr="{{item.statusStr}}" originalPrice="{{item.originalPrice}}" relPay="{{item.relPay}}" bind:transfer="refush"></orderscard>
+ </van-tab>
+  <van-tab title="预约中" name="0">
+    <view >
+      <van-empty wx:if="{{!orders || orders.length == 0}}" description="暂无订单" />
+      <orderscard wx:for="{{orders}}" wx:key="cid" wx:for-item="item" wx:for-index="index" serial_number='{{item.serialNumber}}' oid= "{{item.id}}" createDate="{{item.createTime}}" cid="{{item.cid}}" statusStr="{{item.statusStr}}" originalPrice="{{item.originalPrice}}" relPay="{{item.relPay}}" bind:transfer="refush"></orderscard>
+    </view>
+  </van-tab>
+  <van-tab title="使用中" name="2">
+    <van-empty wx:if="{{!orders || orders.length == 0}}" description="暂无订单" />
+    <orderscard wx:for="{{orders}}" wx:key="cid" wx:for-item="item" wx:for-index="index" serial_number='{{item.serialNumber}}' cid="{{item.cid}}" oid= "{{item.id}}" createDate="{{item.createTime}}" statusStr="{{item.statusStr}}" originalPrice="{{item.originalPrice}}" relPay="{{item.relPay}}" bind:transfer="refush"></orderscard>
+  </van-tab>
+  <van-tab title="完成订单" name="3">
+    <van-empty wx:if="{{!orders || orders.length == 0}}" description="暂无订单" />
+    <orderscard wx:for="{{orders}}" wx:key="cid" wx:for-item="item" wx:for-index="index" serial_number='{{item.serialNumber}}' cid="{{item.cid}}" oid= "{{item.id}}" createDate="{{item.createTime}}" statusStr="{{item.statusStr}}" originalPrice="{{item.originalPrice}}" relPay="{{item.relPay}}" bind:transfer="refush"></orderscard>
+  </van-tab>
+  <van-tab title="取消订单" name="4">
+    <van-empty wx:if="{{!orders || orders.length == 0}}" description="暂无订单" />
+    <orderscard wx:for="{{orders}}" wx:key="cid" wx:for-item="item" wx:for-index="index" serial_number='{{item.serialNumber}}' cid="{{item.cid}}" oid= "{{item.id}}" createDate="{{item.createTime}}" statusStr="{{item.statusStr}}" originalPrice="{{item.originalPrice}}" relPay="{{item.relPay}}" bind:transfer="refush"></orderscard>
+  </van-tab>
+</van-tabs>

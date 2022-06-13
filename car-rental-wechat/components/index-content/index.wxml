@@ -1,0 +1,34 @@
+<!--components/index-content/index.wxml-->
+<page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}" />
+<van-row>
+    <van-col span="12" class="card" wx:for="{{reco}}" wx:for-item="item" wx:key="id">
+        <card image="{{item.picUrl}}" price="{{item.price}}" bindtap="getInfo" title="{{item.name}}" color="{{item.colorSet}}" colorcount="{{item.colorSet.length}}" data-id="{{item.id}}" data-title="{{item.name}}">
+        </card>
+    </van-col>
+</van-row>
+<van-popup show="{{ show }}" round position="bottom" custom-style="height: 81%" bind:close="onClose" lock-scroll="true" z-index="10">
+    <view class="title">
+        <view class="title-content">
+            <view>
+                <van-icon name="minus" color="black" size="62rpx" />
+            </view>
+            <text>{{poupTitle}}</text>
+            <view style="margin-top: 12rpx;">
+                <text style="color: #8a8a8a; font-size: 24rpx;">{{carList.length}}款可选</text>
+            </view>
+        </view>
+    </view>
+    <view style="margin-top: 13vh ;">
+    <view wx:if="{{networkErr}}">
+        <van-empty wx:if="{{networkErr}}" image="network" description="网络故障">
+            <van-button round color="#53455555" custom-class="netErr" bind:tap="reStart">重试</van-button>
+        </van-empty>
+    </view>
+    <view wx:else>
+        <van-col span="24" class="card" wx:for="{{carList}}" wx:key="id" wx:for-item="item">
+            <card bindtap="gotocarInfo" type="info" image="{{imgUrlPre}}{{item.picUrls[0]}}" price="{{item.price}}" title="{{item.name}}" licensePlate="{{item.licensePlate}}" plateYear="{{item.plateYear}}" data-bzId="{{item.id}}">
+            </card>
+        </van-col>
+    </view>
+    </view>
+</van-popup>

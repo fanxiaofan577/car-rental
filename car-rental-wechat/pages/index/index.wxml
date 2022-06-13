@@ -1,0 +1,20 @@
+<!--pages/index/index.wxml-->
+<page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}" />
+
+<van-search value="{{ value }}" placeholder="请输入搜索关键词" show-action shape="round" bind:search="onSearch" bind:cancel="onCancel" custom-class="search" />
+<view wx:if="{{networkErr}}" >
+  <van-empty image="network" description="网络故障" >
+	<van-button round color="#53455555" custom-class="netErr" bind:tap="reStart">重试</van-button>
+</van-empty>
+</view>
+<view wx:else>
+  <van-tabs active="{{ active }}" bind:change="onChange" animated="true" swipeable="true" color="#515151" line-width="60px" sticky="true" z-index="9999">
+  <van-tab title="{{item.name}}" wx:for="{{category}}" wx:key="id" wx:for-item="item">
+  <index-content catId="{{item.id}}"></index-content>
+  </van-tab>
+</van-tabs>
+
+</view>
+
+
+

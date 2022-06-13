@@ -1,0 +1,38 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/user/index",
+        "pages/carInfo/index",
+        "pages/booking/index",
+        "pages/order/index",
+        "pages/order_details/index"
+    ],
+	"usingComponents":{
+		"van-empty": "@vant/weapp/empty/index",
+		 "van-button": "@vant/weapp/button/index"
+	},
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "跑跑租车",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/home.png",
+                "selectedIconPath": "images/home-select.png"
+            },
+            {
+                "pagePath": "pages/user/index",
+                "text": "我的",
+                "iconPath": "images/user.png",
+                "selectedIconPath": "images/user-select.png"
+            }
+        ],
+        "selectedColor": "#000000"
+    },
+    "sitemapLocation": "sitemap.json"
+}

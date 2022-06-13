@@ -1,0 +1,10 @@
+{
+    "component": true,
+    "usingComponents": {
+        "van-row": "@vant/weapp/row/index",
+        "van-col": "@vant/weapp/col/index",
+        "card":"/components/card/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-icon": "@vant/weapp/icon/index"
+    }
+}

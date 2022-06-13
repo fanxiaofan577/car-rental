@@ -1,0 +1,69 @@
+<view wx:if="{{networkErr}}">
+    <van-empty image="network" description="网络故障">
+        <van-button round color="#53455555" custom-class="netErr" bind:tap="reStart">重试</van-button>
+    </van-empty>
+</view>
+<view wx:else>
+    <view class="view_box1">
+        <view class="order_state">{{order.statusStr}}</view>
+        <view class="usecar_notice">用车须知</view>
+    </view>
+    <view class="view_box2">
+        <view class="view_public_padding">
+            <view class="order_info">
+                <view class="order_info_font">下单时间：{{order.bookingTime}}</view>
+                <view class="order_info_font">订单编号：{{order.serialNumber}}</view>
+            </view>
+            <view class="itinerary">所属行程用车:</view>
+            <view class="car_info">
+                <view>
+                    <image style="height: 130rpx;width: 220rpx; border-radius: 10rpx;" src="{{imgUrlPre}}{{car.picUrls[0]}}"></image>
+                </view>
+                <view style="padding-left: 20rpx;height: 130rpx;display: flex;flex-direction:column;justify-content:space-between;">
+                    <view style="font-size: 28rpx; color: #2a2a2a;font-weight: 500;">{{car.name}}</view>
+                    <view style=" width: 440rpx; display: flex;flex-direction:row;justify-content:space-between;">
+                        <view style="font-size: 26rpx;color: #534555;">用车天数：{{order.rentDays}}天</view>
+                        <view style="font-size: 26rpx;color: #534555;">待租用</view>
+                    </view>
+                </view>
+            </view>
+            <view style="font-size: 24rpx;margin-top: 20rpx; font-weight: 500; color: #2a2a2a;">进度:</view>
+            <view style="margin-top: 10rpx;">
+                <van-steps steps="{{ steps }}" active="{{ order.status }}" direction="horizontal" active-color="#534555" />
+            </view>
+            <view style="margin-top:50rpx">
+                <view style="font-size: 28rpx; color: #2a2a2aee;font-weight: 600;">用车时间：{{order.useDay}} 08:00</view>
+                <view style="font-size: 28rpx; color: #2a2a2aee;font-weight: 600; margin-top: 40rpx;">还车时间：{{order.reDay}} 22:30</view>
+            </view>
+        </view>
+    </view>
+    <view class="view_box3">
+        <view style="padding: 20rpx;">
+            <view style="font-size: 30rpx;color: #534555;font-weight: 600;">用车账单</view>
+            <view style="margin-top: 20rpx; font-size: 28rpx;">用车租金：￥{{order.originalPrice}}</view>
+            <view style="width: 680rpx; display: flex;flex-direction:row;justify-content:space-between;margin-top: 20rpx; font-size: 26rpx; color:#8f8f8f ;">
+                <view>多日折扣价【{{order.rentDays}}天】</view>
+                <view>￥{{order.relPay}}</view>
+            </view>
+            <view style="margin-top: 20rpx;font-size: 26rpx;">*未付租金：￥{{order.relPay}}</view>
+            <view style="margin-top: 30rpx;height:100rpx; display: flex;justify-content:space-between;">
+                <view>
+                    <view style=" font-size: 28rpx;">未购买升级保障服务</view>
+                    <view style="margin-top: 10rpx; font-size: 26rpx; color:#8f8f8f ;">享1500元车损保障</view>
+                </view>
+                <view style=" font-size: 26rpx; color:#8f8f8f ;line-height: 100rpx;">订单确认后可购买</view>
+            </view>
+            <view style="margin-top: 20rpx; font-size: 26rpx;">车损押金：￥10000</view>
+            <view style="margin-top: 30rpx; font-size: 26rpx;">违章押金：￥2000</view>
+        </view>
+    </view>
+    <view style="height:270rpx ;"></view>
+    <view class="view_box4">
+        <view style="background-color:#fff7cc ;width: 100%;height: 70rpx; font-size: 24rpx;color: #F56723; line-height: 70rpx;display: flex;flex-direction: row;">预计2小时内完成档期确认，您可以联系客服了解进度</view>
+        <view style="height: 150rpx;width: 100%; background-color: #fff;  display: flex; flex-direction:row-reverse">
+            <view style="width: 200rpx;height: 80rpx;border-radius: 40rpx;background-color:#534555 ; color: #fff; text-align: center;line-height: 80rpx;margin-right: 20rpx;margin-top:20rpx ;"><text>联系客服</text></view>
+        </view>
+    </view>
+</view>
+
+<!-- <van-submit-bar button-text="联系客服" tip="预计30:00内完成档期确认，您可以联系客服了解进度" button-class="button-class" bind:submit="onSubmit" /> -->

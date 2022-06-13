@@ -1,0 +1,27 @@
+/* pages/index/index.wxss */
+.card{
+    margin-top: 20px;
+}
+.search{
+    position: relative;
+    z-index: 100 !important;
+}
+.title{
+    position: fixed;
+    overflow: hidden;
+    width: 100vw;
+    height: 13vh;
+    z-index: 999;
+    background: #fff;
+}
+.title-content{
+    position: relative;
+    text-align: center;
+    height: 13vh;
+
+    background: #fff;
+}
+.netErr{
+	width: 320rpx;
+	height: 80rpx;
+}

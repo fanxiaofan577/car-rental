@@ -1,0 +1,52 @@
+<!--components/card/index.wxml-->
+<view wx:if="{{type=='default'}}" class="l-class card-container card-container-cover card-container-cover-left card-container-unfull">
+  <block>
+    <image mode="aspectFit" class="l-img-class cover-img-unfull card-img-cover card-img-cover-left" lazy-load src="{{imgUrlPre}}{{image}}"></image>
+    <view class="card-content">
+      <text class="l-title-class card-title card-title-cover-price">￥{{price}}/天起</text>
+      <text class="l-title-class card-title card-title-cover">{{title}}</text>
+      <view class="car-info">
+        <view class="color-list">
+          <view class="car-color" wx:for="{{color}}" wx:key="itemitem" wx:for-item="item" wx:for-key="index" style="background-color:{{item}};"></view>
+        </view>
+        <view>
+          <text style="font-size: 22rpx;">{{colorcount}}种颜色</text>
+          <van-icon name="arrow" color="black" size="22rpx" />
+        </view>
+      </view>
+      <slot />
+    </view>
+  </block>
+</view>
+<view wx:if="{{type=='info'}}" class="card-container02 card-container-cover02 card-container-cover-left02 card-container-unfull02">
+  <block>
+    <view style="overflow: hidden; position: relative; height: 380rpx;">
+      <image class="cover-img-unfull02" mode="aspectFill"  lazy-load src="{{image}}"></image>
+    </view>
+    <view class="card-content02">
+      <view style="margin-top: 16rpx;">
+        <text class=" card-title02 ">￥{{price}}</text>
+        <text class="card-title-cover-price02">/天</text>
+      </view>
+      <text class="card-title-cover02">{{title}}</text>
+      <view class="plate">
+        <text class="Plateinfo">{{licensePlate}} / {{plateYear}}上牌</text>
+        <text class="order">马上预约</text>
+      </view>
+      <slot />
+    </view>
+  </block>
+  <block wx:if="{{type=='testCard'}}">
+  </block>
+</view>
+<view wx:if="{{type=='forminfo'}}" class="card-container02 card-container-cover02 card-container-cover-left02 card-container-unfull02">
+  <block>
+    <view class="card-content02">
+      <text class="card-title-cover02">车辆信息：{{title}}</text>
+      <text class="card-title-cover02">车牌号：{{licensePlate}}</text>
+      <text class="card-title-cover02">上牌时间：{{plateYear}}年</text>
+      <text class="card-title-cover03">车身颜色：{{color}}</text>
+      <slot />
+    </view>
+  </block>
+</view>

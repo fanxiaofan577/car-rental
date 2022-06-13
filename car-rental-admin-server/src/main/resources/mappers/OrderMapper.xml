@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.paopao.zuchebackend.mapper.OrderMapper">
+
+    <resultMap type="cn.paopao.zuchebackend.entity.Order" id="OrderMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="serialNumber" column="serial_number" jdbcType="INTEGER"/>
+        <result property="cid" column="cid" jdbcType="INTEGER"/>
+        <result property="aid" column="aid" jdbcType="INTEGER"/>
+        <result property="bookingTime" column="booking_time" jdbcType="INTEGER"/>
+        <result property="endTime" column="end_time" jdbcType="INTEGER"/>
+        <result property="rentDays" column="rent_days" jdbcType="INTEGER"/>
+        <result property="getPreson" column="get_preson" jdbcType="VARCHAR"/>
+        <result property="cardId" column="card_id" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="cause" column="cause" jdbcType="VARCHAR"/>
+        <result property="relPay" column="rel_pay" jdbcType="NUMERIC"/>
+        <result property="originalPrice" column="original_price" jdbcType="NUMERIC"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdateTime" column="last_update_time" jdbcType="TIMESTAMP"/>
+        <association property="car" javaType="Car">
+            <id property="name" column="name"/>
+            <result property="licensePlate" column="licensePlate"/>
+        </association>
+        <association property="account" javaType="Account">
+            <id property="nickName" column="nickName"/>
+        </association>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="OrderMap">
+        select
+          id,
+               serial_number,
+               cid, aid, booking_time,
+               end_time,
+               rent_days,
+               get_preson,
+               card_id,
+               phone,
+               status,
+               remark,
+               cause,
+               rel_pay,
+               original_price,
+               create_time,
+               last_update_time
+        from `order`
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="OrderMap">
+        select
+          o.*,
+            c.name as name,
+            c.license_plate as licensePlate,
+            a.nick_name as nickName
+        from `order` o,`car` c,`account` a
+        <where>
+            <if test="id != null">
+                and o.id = #{id}
+            </if>
+            <if test="serialNumber != null">
+                and o.serial_number = #{serialNumber}
+            </if>
+            <if test="cid != null">
+                and o.cid = #{cid}
+            </if>
+            <if test="aid != null">
+                and o.aid = #{aid}
+            </if>
+            <if test="bookingTime != null">
+                and o.booking_time = #{bookingTime}
+            </if>
+            <if test="endTime != null">
+                and o.end_time = #{endTime}
+            </if>
+            <if test="rentDays != null">
+                and o.rent_days = #{rentDays}
+            </if>
+            <if test="getPreson != null and getPreson != ''">
+                and o.get_preson = #{getPreson}
+            </if>
+            <if test="cardId != null and cardId != ''">
+                and o.card_id = #{cardId}
+            </if>
+            <if test="phone != null and phone != ''">
+                and o.phone = #{phone}
+            </if>
+            <if test="status != null">
+                and o.status = #{status}
+            </if>
+            <if test="remark != null and remark != ''">
+                and o.remark = #{remark}
+            </if>
+            <if test="cause != null and cause != ''">
+                and o.cause = #{cause}
+            </if>
+            <if test="relPay != null">
+                and o.rel_pay = #{relPay}
+            </if>
+            <if test="originalPrice != null">
+                and o.original_price = #{originalPrice}
+            </if>
+            <if test="createTime != null">
+                and o.create_time = #{createTime}
+            </if>
+            <if test="lastUpdateTime != null">
+                and o.last_update_time = #{lastUpdateTime}
+            </if>
+        and o.cid = c.id and o.aid = a.account_id
+        </where>
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from `order`
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="serialNumber != null">
+                and serial_number = #{serialNumber}
+            </if>
+            <if test="cid != null">
+                and cid = #{cid}
+            </if>
+            <if test="aid != null">
+                and aid = #{aid}
+            </if>
+            <if test="bookingTime != null">
+                and booking_time = #{bookingTime}
+            </if>
+            <if test="endTime != null">
+                and end_time = #{endTime}
+            </if>
+            <if test="rentDays != null">
+                and rent_days = #{rentDays}
+            </if>
+            <if test="getPreson != null and getPreson != ''">
+                and get_preson = #{getPreson}
+            </if>
+            <if test="cardId != null and cardId != ''">
+                and card_id = #{cardId}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+            <if test="cause != null and cause != ''">
+                and cause = #{cause}
+            </if>
+            <if test="relPay != null">
+                and rel_pay = #{relPay}
+            </if>
+            <if test="originalPrice != null">
+                and original_price = #{originalPrice}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastUpdateTime != null">
+                and last_update_time = #{lastUpdateTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into `order`(serial_number, cid, aid, booking_time, end_time, rent_days, get_preson, card_id, phone, status, remark, cause, rel_pay, original_price, create_time, last_update_time)
+        values (#{serialNumber}, #{cid}, #{aid}, #{bookingTime}, #{endTime}, #{rentDays}, #{getPreson}, #{cardId}, #{phone}, #{status}, #{remark}, #{cause}, #{relPay}, #{originalPrice}, #{createTime}, #{lastUpdateTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into `order`(serial_number, cid, aid, booking_time, end_time, rent_days, get_preson, card_id, phone, status, remark, cause, rel_pay, original_price, create_time, last_update_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.serialNumber}, #{entity.cid}, #{entity.aid}, #{entity.bookingTime}, #{entity.endTime}, #{entity.rentDays}, #{entity.getPreson}, #{entity.cardId}, #{entity.phone}, #{entity.status}, #{entity.remark}, #{entity.cause}, #{entity.relPay}, #{entity.originalPrice}, #{entity.createTime}, #{entity.lastUpdateTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into `order`(serial_number, cid, aid, booking_time, end_time, rent_days, get_preson, card_id, phone, status, remark, cause, rel_pay, original_price, create_time, last_update_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.serialNumber}, #{entity.cid}, #{entity.aid}, #{entity.bookingTime}, #{entity.endTime}, #{entity.rentDays}, #{entity.getPreson}, #{entity.cardId}, #{entity.phone}, #{entity.status}, #{entity.remark}, #{entity.cause}, #{entity.relPay}, #{entity.originalPrice}, #{entity.createTime}, #{entity.lastUpdateTime})
+        </foreach>
+        on duplicate key update
+        serial_number = values(serial_number),
+        cid = values(cid),
+        aid = values(aid),
+        booking_time = values(booking_time),
+        end_time = values(end_time),
+        rent_days = values(rent_days),
+        get_preson = values(get_preson),
+        card_id = values(card_id),
+        phone = values(phone),
+        status = values(status),
+        remark = values(remark),
+        cause = values(cause),
+        rel_pay = values(rel_pay),
+        original_price = values(original_price),
+        create_time = values(create_time),
+        last_update_time = values(last_update_time)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update `order`
+        <set>
+            <if test="serialNumber != null">
+                serial_number = #{serialNumber},
+            </if>
+            <if test="cid != null">
+                cid = #{cid},
+            </if>
+            <if test="aid != null">
+                aid = #{aid},
+            </if>
+            <if test="bookingTime != null">
+                booking_time = #{bookingTime},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime},
+            </if>
+            <if test="rentDays != null">
+                rent_days = #{rentDays},
+            </if>
+            <if test="getPreson != null and getPreson != ''">
+                get_preson = #{getPreson},
+            </if>
+            <if test="cardId != null and cardId != ''">
+                card_id = #{cardId},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="cause != null and cause != ''">
+                cause = #{cause},
+            </if>
+            <if test="relPay != null">
+                rel_pay = #{relPay},
+            </if>
+            <if test="originalPrice != null">
+                original_price = #{originalPrice},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="lastUpdateTime != null">
+                last_update_time = #{lastUpdateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过订单号修改-->
+    <update id="updateStatus">
+        update `order` set status = #{status}
+        where serial_number = #{serialNumber}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from `order` where id = #{id}
+    </delete>
+
+</mapper>
+

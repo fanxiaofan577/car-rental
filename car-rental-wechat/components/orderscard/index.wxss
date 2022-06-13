@@ -1,0 +1,7 @@
+/* components/orderscard/index.wxss */
+.van-card-bg{
+    background-color: #fff !important;
+}
+.goodsTitle{
+    color: #534555;
+}

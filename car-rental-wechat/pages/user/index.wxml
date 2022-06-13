@@ -1,0 +1,88 @@
+<view wx:if="{{userInfo.avatarUrl}}">
+  <view class="view_box01">
+    <block>
+      <view class="view_box02">
+        <view class="view_box03">
+          <view>
+            <image src="{{userInfo.avatarUrl}}" class="user_image"></image>
+          </view>
+          <view class="user_infobox">
+            <text class="user_name_text">{{userInfo.nickName}}</text>
+            <text class="user_id_text">uuid</text>
+          </view>
+        </view>
+        <view class="view_box04">
+          <button class="button01">签到</button>
+        </view>
+      </view>
+
+      <van-grid border="{{false}}" column-num="3" custom-class="grid">
+        <van-grid-item icon-prefix="iconfont" icon=".icon-huiyuanguanli" text="会员" />
+        <van-grid-item icon-prefix="iconfont" icon=".icon-jifen-xianxing" text="积分" />
+        <van-grid-item icon-prefix="iconfont" icon=".icon-shijian" text="登陆时间" />
+      </van-grid>
+    </block>
+  </view>
+
+
+  <view class="view_box05">
+    <block>
+      <view class="car-info">
+        <view class="color-list">
+          <view> 我的订单</view>
+        </view>
+        <view class="view_box06" bindtap="goto_order">
+          <text>全部订单</text>
+          <van-icon name="arrow" color="black" />
+        </view>
+      </view>
+      <van-grid square custom-class="order-line">
+        <van-grid-item icon-prefix="iconfont" icon=".icon-yuyue" text="预约中" link-type="navigateTo"
+    url="/pages/order/index?active=1" />
+        <van-grid-item icon-prefix="iconfont" icon=".icon-qiche" text="使用中" link-type="navigateTo"
+    url="/pages/order/index?active=2"/>
+        <van-grid-item icon-prefix="iconfont" icon=".icon-yiwancheng" text="已还车"  link-type="navigateTo"
+    url="/pages/order/index?active=3"/>
+        <van-grid-item icon-prefix="iconfont" icon=".icon-yiwancheng" text="取消订单" link-type="navigateTo"
+    url="/pages/order/index?active=4"/>
+      </van-grid>
+    </block>
+  </view>
+  <view class="view_box05" style="border: 20rpx; height: 100%;">
+    <van-cell title="设置" is-link />
+    <van-cell title="关于" is-link />
+    <van-cell title="帮助" is-link />
+    <van-cell title="联系方式" is-link />
+    <van-cell title="注销账号" is-link />
+  </view>
+
+  <view class="loginout" bindtap="loginOut">
+    <button style="width:100%; height: 80rpx; font-size: 30rpx;background-color: #534555; color: #fff;"> 退出登录</button>
+</view>
+</view>
+
+
+<view wx:else class="view_box01" bindtap="getUserProfile">
+  <block>
+    <view class="view_box02">
+      <view class="view_box03">
+        <view>
+          <image src="/images/avatar.png" class="user_image"></image>
+        </view>
+        <view class="user_infobox">
+          <text class="user_name_text">未登录</text>
+          <text class="user_id_text">uid</text>
+        </view>
+      </view>
+      <view class="view_box04">
+        <button class="button01">登录</button>
+      </view>
+    </view>
+
+    <van-grid border="{{false}}" column-num="3" custom-class="grid">
+      <van-grid-item icon-prefix="iconfont" icon=".icon-huiyuanguanli" text="会员" />
+      <van-grid-item icon-prefix="iconfont" icon=".icon-jifen-xianxing" text="积分" />
+      <van-grid-item icon-prefix="iconfont" icon=".icon-shijian" text="登陆时间" />
+    </van-grid>
+  </block>
+</view>

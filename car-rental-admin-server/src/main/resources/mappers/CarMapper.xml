@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.paopao.zuchebackend.mapper.CarMapper">
+
+    <resultMap type="cn.paopao.zuchebackend.entity.Car" id="CarMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="picUrls" column="pic_urls" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="NUMERIC"/>
+        <result property="vipPrice" column="vip_price" jdbcType="NUMERIC"/>
+        <result property="licensePlate" column="license_plate" jdbcType="VARCHAR"/>
+        <result property="plateYear" column="plate_year" jdbcType="VARCHAR"/>
+        <result property="configuration" column="configuration" jdbcType="VARCHAR"/>
+        <result property="rcId" column="rc_id" jdbcType="INTEGER"/>
+        <result property="threeDayPrice" column="three_day_price" jdbcType="NUMERIC"/>
+        <result property="vipThreeDayPrice" column="vip_three_day_price" jdbcType="NUMERIC"/>
+        <result property="weekPrice" column="week_price" jdbcType="NUMERIC"/>
+        <result property="vipWeekPrice" column="vip_week_price" jdbcType="NUMERIC"/>
+        <result property="halfmoonPrice" column="halfmoon_price" jdbcType="NUMERIC"/>
+        <result property="vipHalfmoonPrice" column="vip_halfmoon_price" jdbcType="NUMERIC"/>
+        <result property="moonPrice" column="moon_price" jdbcType="NUMERIC"/>
+        <result property="vipMoonPrice" column="vip_moon_price" jdbcType="NUMERIC"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdateTime" column="last_update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="CarMap">
+        select
+          id, name, pic_urls, price, vip_price, license_plate, plate_year, configuration, rc_id, three_day_price, vip_three_day_price, week_price, vip_week_price, halfmoon_price, vip_halfmoon_price, moon_price, vip_moon_price, status, create_time, last_update_time
+        from car
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CarMap">
+        select
+          id, name, pic_urls, price, vip_price, license_plate, plate_year, configuration, rc_id, three_day_price, vip_three_day_price, week_price, vip_week_price, halfmoon_price, vip_halfmoon_price, moon_price, vip_moon_price, status, create_time, last_update_time
+        from car
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="picUrls != null and picUrls != ''">
+                and pic_urls = #{picUrls}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="vipPrice != null">
+                and vip_price = #{vipPrice}
+            </if>
+            <if test="licensePlate != null and licensePlate != ''">
+                and license_plate = #{licensePlate}
+            </if>
+            <if test="plateYear != null and plateYear != ''">
+                and plate_year = #{plateYear}
+            </if>
+            <if test="configuration != null and configuration != ''">
+                and configuration = #{configuration}
+            </if>
+            <if test="rcId != null">
+                and rc_id = #{rcId}
+            </if>
+            <if test="threeDayPrice != null">
+                and three_day_price = #{threeDayPrice}
+            </if>
+            <if test="vipThreeDayPrice != null">
+                and vip_three_day_price = #{vipThreeDayPrice}
+            </if>
+            <if test="weekPrice != null">
+                and week_price = #{weekPrice}
+            </if>
+            <if test="vipWeekPrice != null">
+                and vip_week_price = #{vipWeekPrice}
+            </if>
+            <if test="halfmoonPrice != null">
+                and halfmoon_price = #{halfmoonPrice}
+            </if>
+            <if test="vipHalfmoonPrice != null">
+                and vip_halfmoon_price = #{vipHalfmoonPrice}
+            </if>
+            <if test="moonPrice != null">
+                and moon_price = #{moonPrice}
+            </if>
+            <if test="vipMoonPrice != null">
+                and vip_moon_price = #{vipMoonPrice}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastUpdateTime != null">
+                and last_update_time = #{lastUpdateTime}
+            </if>
+        </where>
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from car
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="picUrls != null and picUrls != ''">
+                and pic_urls = #{picUrls}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="vipPrice != null">
+                and vip_price = #{vipPrice}
+            </if>
+            <if test="licensePlate != null and licensePlate != ''">
+                and license_plate = #{licensePlate}
+            </if>
+            <if test="plateYear != null and plateYear != ''">
+                and plate_year = #{plateYear}
+            </if>
+            <if test="configuration != null and configuration != ''">
+                and configuration = #{configuration}
+            </if>
+            <if test="rcId != null">
+                and rc_id = #{rcId}
+            </if>
+            <if test="threeDayPrice != null">
+                and three_day_price = #{threeDayPrice}
+            </if>
+            <if test="vipThreeDayPrice != null">
+                and vip_three_day_price = #{vipThreeDayPrice}
+            </if>
+            <if test="weekPrice != null">
+                and week_price = #{weekPrice}
+            </if>
+            <if test="vipWeekPrice != null">
+                and vip_week_price = #{vipWeekPrice}
+            </if>
+            <if test="halfmoonPrice != null">
+                and halfmoon_price = #{halfmoonPrice}
+            </if>
+            <if test="vipHalfmoonPrice != null">
+                and vip_halfmoon_price = #{vipHalfmoonPrice}
+            </if>
+            <if test="moonPrice != null">
+                and moon_price = #{moonPrice}
+            </if>
+            <if test="vipMoonPrice != null">
+                and vip_moon_price = #{vipMoonPrice}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastUpdateTime != null">
+                and last_update_time = #{lastUpdateTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into car(name, pic_urls, price, vip_price, license_plate, plate_year, configuration, rc_id, three_day_price, vip_three_day_price, week_price, vip_week_price, halfmoon_price, vip_halfmoon_price, moon_price, vip_moon_price, status, create_time, last_update_time)
+        values (#{name}, #{picUrls}, #{price}, #{vipPrice}, #{licensePlate}, #{plateYear}, #{configuration}, #{rcId}, #{threeDayPrice}, #{vipThreeDayPrice}, #{weekPrice}, #{vipWeekPrice}, #{halfmoonPrice}, #{vipHalfmoonPrice}, #{moonPrice}, #{vipMoonPrice}, #{status}, #{createTime}, #{lastUpdateTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into car(name, pic_urls, price, vip_price, license_plate, plate_year, configuration, rc_id, three_day_price, vip_three_day_price, week_price, vip_week_price, halfmoon_price, vip_halfmoon_price, moon_price, vip_moon_price, status, create_time, last_update_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.name}, #{entity.picUrls}, #{entity.price}, #{entity.vipPrice}, #{entity.licensePlate}, #{entity.plateYear}, #{entity.configuration}, #{entity.rcId}, #{entity.threeDayPrice}, #{entity.vipThreeDayPrice}, #{entity.weekPrice}, #{entity.vipWeekPrice}, #{entity.halfmoonPrice}, #{entity.vipHalfmoonPrice}, #{entity.moonPrice}, #{entity.vipMoonPrice}, #{entity.status}, #{entity.createTime}, #{entity.lastUpdateTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into car(name, pic_urls, price, vip_price, license_plate, plate_year, configuration, rc_id, three_day_price, vip_three_day_price, week_price, vip_week_price, halfmoon_price, vip_halfmoon_price, moon_price, vip_moon_price, status, create_time, last_update_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.picUrls}, #{entity.price}, #{entity.vipPrice}, #{entity.licensePlate}, #{entity.plateYear}, #{entity.configuration}, #{entity.rcId}, #{entity.threeDayPrice}, #{entity.vipThreeDayPrice}, #{entity.weekPrice}, #{entity.vipWeekPrice}, #{entity.halfmoonPrice}, #{entity.vipHalfmoonPrice}, #{entity.moonPrice}, #{entity.vipMoonPrice}, #{entity.status}, #{entity.createTime}, #{entity.lastUpdateTime})
+        </foreach>
+        on duplicate key update
+        name = values(name),
+        pic_urls = values(pic_urls),
+        price = values(price),
+        vip_price = values(vip_price),
+        license_plate = values(license_plate),
+        plate_year = values(plate_year),
+        configuration = values(configuration),
+        rc_id = values(rc_id),
+        three_day_price = values(three_day_price),
+        vip_three_day_price = values(vip_three_day_price),
+        week_price = values(week_price),
+        vip_week_price = values(vip_week_price),
+        halfmoon_price = values(halfmoon_price),
+        vip_halfmoon_price = values(vip_halfmoon_price),
+        moon_price = values(moon_price),
+        vip_moon_price = values(vip_moon_price),
+        status = values(status),
+        create_time = values(create_time),
+        last_update_time = values(last_update_time)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update car
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="picUrls != null and picUrls != ''">
+                pic_urls = #{picUrls},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="vipPrice != null">
+                vip_price = #{vipPrice},
+            </if>
+            <if test="licensePlate != null and licensePlate != ''">
+                license_plate = #{licensePlate},
+            </if>
+            <if test="plateYear != null and plateYear != ''">
+                plate_year = #{plateYear},
+            </if>
+            <if test="configuration != null and configuration != ''">
+                configuration = #{configuration},
+            </if>
+            <if test="rcId != null">
+                rc_id = #{rcId},
+            </if>
+            <if test="threeDayPrice != null">
+                three_day_price = #{threeDayPrice},
+            </if>
+            <if test="vipThreeDayPrice != null">
+                vip_three_day_price = #{vipThreeDayPrice},
+            </if>
+            <if test="weekPrice != null">
+                week_price = #{weekPrice},
+            </if>
+            <if test="vipWeekPrice != null">
+                vip_week_price = #{vipWeekPrice},
+            </if>
+            <if test="halfmoonPrice != null">
+                halfmoon_price = #{halfmoonPrice},
+            </if>
+            <if test="vipHalfmoonPrice != null">
+                vip_halfmoon_price = #{vipHalfmoonPrice},
+            </if>
+            <if test="moonPrice != null">
+                moon_price = #{moonPrice},
+            </if>
+            <if test="vipMoonPrice != null">
+                vip_moon_price = #{vipMoonPrice},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="lastUpdateTime != null">
+                last_update_time = #{lastUpdateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from car where id = #{id}
+    </delete>
+
+</mapper>
+

@@ -1,0 +1,14 @@
+{
+  "disableScroll": false,
+  "navigationBarBackgroundColor": "#fefefe",
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "card":"/components/card/index",
+    "index-content":"/components/index-content/index"
+  } 
+
+}

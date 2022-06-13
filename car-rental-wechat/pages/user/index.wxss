@@ -1,0 +1,99 @@
+/* pages/user/index.wxss */
+@import './iconfont.wxss';
+.view_box01 {
+    box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .9);
+    width: 90%;
+    height: 340rpx;
+    margin: 20rpx auto;
+    border-radius: 16rpx;
+    background-color: #fff;
+}
+
+.view_box02 {
+    padding-left: 40rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.view_box03 {
+    padding-top: 40rpx;
+    display: flex;
+}
+
+.user_image {
+    width: 81rpx;
+    height: 81rpx;
+    border-radius: 50%;
+}
+
+.user_infobox {
+    margin-left: 20rpx;
+    vertical-align: center;
+}
+
+.user_name_text {
+    display: block;
+    font-weight: 400;
+}
+
+.user_id_text {
+    font-weight: 200;
+    font-size: 20rpx;
+}
+
+.view_box04 {
+    margin-right: 50rpx;
+}
+
+.button01 {
+    height: 60rpx;
+    font-size: 24rpx;
+    margin-top: 48rpx;
+    border-radius: 30rpx;
+    border: none;
+    background-color: #534555;
+    color: #fff;
+}
+
+.view_box05 {
+    box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .9);
+    width: 90%;
+   
+    margin: 20rpx auto;
+    border-radius: 16rpx;
+    background-color: #fff;
+}
+
+.view_box06 {
+    padding-right: 50rpx;
+    margin-top: 20rpx
+}
+
+.grid {
+    margin-top: 20rpx;
+}
+
+.color-list {
+    padding: 0 60rpx;
+    margin-top: 20rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.car-info {
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1rpx solid;
+    border-color: #53455555;
+    padding-bottom: 20rpx;
+}
+
+.order-line {
+    border-radius: 20rpx;
+}
+
+.loginout{
+    width: 90%;
+    margin: 0 auto;
+}

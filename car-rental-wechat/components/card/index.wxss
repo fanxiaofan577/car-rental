@@ -1,0 +1,145 @@
+/* components/card/index.wxss */
+.card-container {
+    margin: 8px auto;
+    padding: 30rpx;
+    box-sizing: border-box;
+    background: #fff;
+    display: flex
+}
+
+.card-container-unfull {
+    width: 92%;
+    box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .5);
+    border-radius: 4px
+}
+
+
+.card-container-cover {
+    flex-direction: column
+}
+
+.cover-img-unfull {
+    width: 100%;
+    height: 200rpx;
+}
+
+.card-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1
+}
+
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+    text-align: center;
+}
+
+.card-title-cover {
+    font-size: 30rpx;
+    margin-top: 10rpx
+}
+.card-title-cover-price{
+    font-size: 24rpx;
+    color:#515151;
+}
+.car-info{
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.color-list{
+    margin-top: 20rpx;
+    display: flex;
+    flex-direction: row;
+}
+.car-color{
+    height: 16rpx;
+    width: 16rpx;
+    margin-left: 8rpx;
+    border-radius: 8rpx;
+}
+.card-container02 {
+    margin: 8px auto;
+    /* padding: 30rpx; */
+    box-sizing: border-box;
+    background: #fff;
+    display: flex
+}
+
+.card-container-unfull02 {
+    width: 92vw;
+    box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .5);
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+
+
+.card-container-cover02 {
+    flex-direction: column
+}
+
+.cover-img-unfull02 {
+    width: 92vw;
+    height:  380rpx;
+    position: relative;
+}
+.card-content02 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1
+}
+
+.card-title02 {
+    /* overflow: hidden;
+    text-overflow: ellipsis; */
+    font-size: 30rpx;
+    font-weight: 400rpx;
+    margin-top: 10rpx;
+    margin-left: 20rpx;
+}
+
+.card-title-cover02 {
+    font-size: 30rpx;
+    font-weight: 400rpx;
+    margin-top: 10rpx;
+    margin-left: 20rpx;
+}
+.card-title-cover03 {
+    font-size: 30rpx;
+    font-weight: 400rpx;
+    margin-top: 10rpx;
+    margin-left: 20rpx;
+    margin-bottom: 20rpx;
+}
+.card-title-cover-price02{
+    font-size: 20rpx;
+}
+.Plateinfo{
+    margin-top: 10rpx;
+    margin-left: 20rpx;
+    margin-bottom: 20rpx;
+    font-size: 20rpx;
+    color:#696969;
+}
+.plate{
+    margin-top: 16rpx;
+    margin-right: 20rpx;
+    margin-bottom: 10rpx;
+    display:flex;
+    justify-content: space-around;
+}
+.order{
+    margin-left: auto;
+    width: 150rpx;
+    height: 40rpx;
+    background-color: #6f5d69;
+    border-radius: 60rpx;
+    font-size: 25rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 40rpx;
+}

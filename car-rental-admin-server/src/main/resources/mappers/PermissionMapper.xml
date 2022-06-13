@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.paopao.zuchebackend.mapper.PermissionMapper">
+    <resultMap id="permissionMap"  type="Permission">
+        <id property="permissionId" column="permission_id" jdbcType="INTEGER"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="method" column="method" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdateTime" column="last_update_time" jdbcType="TIMESTAMP"/>
+        <collection property="roles"  ofType="Role">
+            <id property="roleId" column="roleId"/>
+            <result property="name" column="name"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="findAllByAccountId" resultMap="permissionMap">
+        SELECT
+            p.*,
+            r.role_id AS roleId,
+            r.NAME AS NAME
+        FROM
+            account a,
+            account_role ar,
+            role_permission rp,
+            permission p,
+            `role` r
+        WHERE
+            a.account_id = #{accountId}
+
+          AND a.account_id = ar.account_id
+          AND rp.role_id = r.role_id
+          AND rp.permission_id = p.permission_id
+        ORDER BY
+            p.permission_id
+
+
+    </select>
+    <select id="getPermissions" resultMap="permissionMap">
+        SELECT
+            p.*,
+            r.role_id as roleId,
+            r.name as name
+        FROM
+            role_permission rp,permission p,`role` r  where rp.role_id = r.role_id and rp.permission_id = p.permission_id order by p.permission_id
+    </select>
+
+</mapper>
